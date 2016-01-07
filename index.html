@@ -1,0 +1,49 @@
+<html>
+    <head></head>
+    <body>
+        <h1 id="test">Test Text To Use</h1>
+
+        <script type="text/javascript">
+
+            function _(id){
+
+                var about = {
+                    Version: 0.1,
+                    Author: "Paul Fitzgerald"
+                }
+
+                if(id){
+
+                    if(window === this){
+                        return new _(id)
+                    }
+                    this.e = document.getElementById(id);
+                    return this;
+                }else{
+                    return about;
+                }
+            }
+
+            _.prototype = {
+
+                hide: function(){
+                    this.e.style.display = "none";
+                    return this;
+                },
+
+                color : function(color){
+                    this.e.style.color = color;
+                    return this;
+                },
+
+                size : function(size){
+                    this.e.style.fontSize = size;
+                    return this;
+                }
+
+            };
+
+
+        </script>
+    </body>
+</html>
