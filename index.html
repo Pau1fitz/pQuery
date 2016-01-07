@@ -13,7 +13,6 @@
                 }
 
                 if(id){
-
                     if(window === this){
                         return new _(id)
                     }
@@ -26,6 +25,17 @@
 
             _.prototype = {
 
+                add: function(text){
+                    this.e.innerHTML = this.e.innerHTML + text;
+                    return this;
+                },
+
+                replace: function(text){
+                    this.e.textContent = text;
+                    document.body.appendChild(elem);
+                    return this;
+                },
+
                 hide: function(){
                     this.e.style.display = "none";
                     return this;
@@ -34,6 +44,10 @@
                 color : function(color){
                     this.e.style.color = color;
                     return this;
+                },
+
+                bgColor: function(color){
+                    this.e.style.backgroundColor = color;
                 },
 
                 size : function(size){
