@@ -2,62 +2,151 @@
     <head></head>
     <body>
         <h1 id="test">Test Text To Use</h1>
+        <p class="testClass"></p>
+        <p class="testClass"></p>
 
         <script type="text/javascript">
-
-            function _(id){
-
+            function _(elem){
                 var about = {
                     Version: 0.1,
                     Author: "Paul Fitzgerald"
                 }
 
-                if(id){
+                var classOrId = elem.charAt(0)
+
+                if(elem){
                     if(window === this){
-                        return new _(id)
+                        return new _(elem)
                     }
-                    this.e = document.getElementById(id);
-                    return this;
+
+                    if(classOrId === "#"){<html>
+    <head></head>
+    <body>
+        <h1 id="test">Test Text To Use</h1>
+        <p class="testClass">TestClass</p>
+        <p class="testClass">TestClass</p>
+
+        <script type="text/javascript">
+            function _(elem){
+                var about = {
+                    Version: 0.1,
+                    Author: "Paul Fitzgerald"
+                }
+
+                if(elem){
+                    if(window === this){
+                        return new _(elem)
+                    }
+
+                this.classOrId(elem);
+
                 }else{
                     return about;
                 }
             }
-
             _.prototype = {
-
                 add: function(text){
-                    this.e.innerHTML = this.e.innerHTML + text;
+                    console.log(this.e.length)
+                    if(this.e.length >= 1){
+                        for(var i = 0; i < this.e.length; i++){
+                            this.e[i].innerHTML = this.e[i].innerHTML + text;
+                        }
+                    }else{
+                        this.e.innerHTML = this.e.innerHTML + text;
+                    }
                     return this;
                 },
-
                 replace: function(text){
                     this.e.textContent = text;
                     document.body.appendChild(elem);
                     return this;
                 },
-
+                remove: function(){
+                    this.e.remove();
+                    return this;
+                },
                 hide: function(){
                     this.e.style.display = "none";
                     return this;
                 },
-
                 color : function(color){
                     this.e.style.color = color;
                     return this;
                 },
-
                 bgColor: function(color){
                     this.e.style.backgroundColor = color;
                 },
-
                 size : function(size){
                     this.e.style.fontSize = size;
                     return this;
                 }
-
             };
 
+            _.prototype.classOrId = function(elem) {
+                 var classOrId = elem.charAt(0);
 
+                    if(classOrId === "#"){
+                        elem = this.sliceElement(elem);
+                        this.e = document.getElementById(elem);
+                        return this;
+                    }
+                    else if(classOrId === "."){
+                        elem = this.sliceElement(elem)
+                        this.e = document.getElementsByClassName(elem);
+                        return this;
+                    }
+            };
+
+             _.prototype.sliceElement = function(elem){
+                var elem = elem.slice(1);
+                return elem;
+            };
+        </script>
+    </body>
+</html>
+                        elem = elem.slice(1);
+                        this.e = document.getElementById(elem);
+                        return this;
+                    }
+                    else if(classOrId === "."){
+                        elem = elem.slice(1);
+                        this.e = document.getElementsByClassName(elem)
+                    }
+
+                }else{
+                    return about;
+                }
+            }
+            _.prototype = {
+                add: function(text){
+                    this.e.innerHTML = this.e.innerHTML + text;
+                    return this;
+                },
+                replace: function(text){
+                    this.e.textContent = text;
+                    document.body.appendChild(elem);
+                    return this;
+                },
+                remove: function(){
+                    this.e.remove();
+                    return this;
+                },
+                hide: function(){
+                    this.e.style.display = "none";
+                    return this;
+                },
+                color : function(color){
+                    this.e.style.color = color;
+                    return this;
+                },
+                bgColor: function(color){
+                    this.e.style.backgroundColor = color;
+                },
+                size : function(size){
+                    this.e.style.fontSize = size;
+                    return this;
+                }
+            };
         </script>
     </body>
 </html>
