@@ -69,7 +69,16 @@
                     this.e.style.backgroundColor = color;
                 },
                 size : function(size){
-                    this.e.style.fontSize = size;
+
+                    if(this.e.length >= 0){
+                        for(var i = 0; i < this.e.length; i++){
+                            this.e[i].style.fontSize = size;
+                        }
+                    }
+
+                    else{
+                        this.e.style.fontSize = size;
+                    }
                     return this;
                 }
             };
@@ -93,6 +102,7 @@
                 var elem = elem.slice(1);
                 return elem;
             };
+
         </script>
     </body>
 </html>
