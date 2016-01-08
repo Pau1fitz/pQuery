@@ -25,7 +25,6 @@
             }
             _.prototype = {
                 add: function(text){
-                    console.log(this.e.length)
                     if(this.e.length >= 1){
                         for(var i = 0; i < this.e.length; i++){
                             this.e[i].innerHTML = this.e[i].innerHTML + text;
@@ -36,8 +35,16 @@
                     return this;
                 },
                 replace: function(text){
-                    this.e.textContent = text;
-                    document.body.appendChild(elem);
+                    if(this.e.length >= 1){
+                        for(var i = 0; i < this.e.length; i++){
+                            this.e[i].textContent = text;
+                        }
+                    }
+                    
+                    else{
+                        this.e.textContent = text;
+                        document.body.appendChild(elem);
+                    }
                     return this;
                 },
                 remove: function(){
@@ -49,7 +56,13 @@
                     return this;
                 },
                 color : function(color){
-                    this.e.style.color = color;
+                    if(this.e.length >= 0){
+                        for(var i = 0; i < this.e.length; i++){
+                            this.e[i].style.color = color;
+                        }
+                    }else{
+                        this.e.style.color = color;
+                    }
                     return this;
                 },
                 bgColor: function(color){
