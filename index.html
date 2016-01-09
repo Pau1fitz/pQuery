@@ -49,11 +49,21 @@
                     return this;
                 },
                 remove: function(){
-                    this.e.remove();
+                    if(this.e.length >= 0){
+                        this.e[i].remove();
+                    }else{
+                        this.e.remove();
+                    }
                     return this;
                 },
                 hide: function(){
-                    this.e.style.display = "none";
+                    if(this.e.length >= 0){
+                        for(var i = 0; i < this.e.length; i++){
+                            this.e[i].style.display = "none";
+                        }
+                    }else{
+                        this.e.style.display = "none";
+                    }
                     return this;
                 },
                 color : function(color){
@@ -67,7 +77,13 @@
                     return this;
                 },
                 bgColor: function(color){
-                    this.e.style.backgroundColor = color;
+                    if(this.e.length >= 0){
+                        for(var i = 0; i < this.e.length; i++){
+                            this.e[i].style.backgroundColor = color;
+                        }
+                        else{
+                            this.e.style.backgroundColor = color;
+                        }
                 },
                 size : function(size){
 
@@ -76,7 +92,6 @@
                             this.e[i].style.fontSize = size;
                         }
                     }
-
                     else{
                         this.e.style.fontSize = size;
                     }
@@ -87,16 +102,16 @@
             _.prototype.classOrId = function(elem) {
                  var classOrId = elem.charAt(0);
 
-                    if(classOrId === "#"){
-                        elem = this.sliceElement(elem);
-                        this.e = document.getElementById(elem);
-                        return this;
-                    }
-                    else if(classOrId === "."){
-                        elem = this.sliceElement(elem)
-                        this.e = document.getElementsByClassName(elem);
-                        return this;
-                    }
+                if(classOrId === "#"){
+                    elem = this.sliceElement(elem);
+                    this.e = document.getElementById(elem);
+                    return this;
+                }
+                else if(classOrId === "."){
+                    elem = this.sliceElement(elem)
+                    this.e = document.getElementsByClassName(elem);
+                    return this;
+                }
             };
 
              _.prototype.sliceElement = function(elem){
