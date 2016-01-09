@@ -23,7 +23,6 @@
 
             _.prototype = {
                 add: function (text) {
-                    // no if else anymore
                     for (var i = 0; i < this.e.length; i++) {
                         this.e[i].innerHTML = this.e[i].innerHTML + text;
                     }
@@ -50,7 +49,15 @@
                 },
                 hide: function(){
                     for (var i = 0; i < this.e.length; i++) {
-                        this.e[i].style.display = "none";
+                        this.e[i].style.visibility = "hidden";
+                    }
+                    
+                    return this;
+                },
+
+                show: function(){
+                    for (var i = 0; i < this.e.length; i++) {
+                        this.e[i].style.visibility = "visible";
                     }
                     
                     return this;
