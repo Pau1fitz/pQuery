@@ -41,7 +41,6 @@
                             this.e[i].textContent = text;
                         }
                     }
-                    
                     else{
                         this.e.textContent = text;
                         document.body.appendChild(elem);
@@ -100,8 +99,7 @@
             };
 
             _.prototype.classOrId = function(elem) {
-                 var classOrId = elem.charAt(0);
-
+                var classOrId = elem.charAt(0);
                 if(classOrId === "#"){
                     elem = this.sliceElement(elem);
                     this.e = document.getElementById(elem);
