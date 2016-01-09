@@ -1,5 +1,4 @@
 <html>
-    <head></head>
     <body>
         <h1 id="test">Test Text To Use</h1>
         <p class="testClass">TestClass</p>
@@ -12,29 +11,25 @@
                     Version: 0.1,
                     Author: "Paul Fitzgerald"
                 }
-
-                if(elem){
-                    if(window === this){
-                        return new _(elem)
+                if (elem) {
+                    if (window === this) {
+                        return new _(elem);
                     }
-
-                this.classOrId(elem);
-
-                }else{
+                    this.e = document.querySelectorAll(elem); // no need for classOrId() anymore
+                } else {
                     return about;
                 }
             }
+
             _.prototype = {
-                add: function(text){
-                    if(this.e.length >= 1){
-                        for(var i = 0; i < this.e.length; i++){
-                            this.e[i].innerHTML = this.e[i].innerHTML + text;
-                        }
-                    }else{
-                        this.e.innerHTML = this.e.innerHTML + text;
+                add: function (text) {
+                    // no if else anymore
+                    for (var i = 0; i < this.e.length; i++) {
+                        this.e[i].innerHTML = this.e[i].innerHTML + text;
                     }
                     return this;
                 },
+
                 replace: function(text){
                     if(this.e.length >= 1){
                         for(var i = 0; i < this.e.length; i++){
@@ -48,75 +43,39 @@
                     return this;
                 },
                 remove: function(){
-                    if(this.e.length >= 0){
+                    for (var i = 0; i < this.e.length; i++) {
                         this.e[i].remove();
-                    }else{
-                        this.e.remove();
                     }
                     return this;
                 },
                 hide: function(){
-                    if(this.e.length >= 0){
-                        for(var i = 0; i < this.e.length; i++){
-                            this.e[i].style.display = "none";
-                        }
-                    }else{
-                        this.e.style.display = "none";
+                    for (var i = 0; i < this.e.length; i++) {
+                        this.e[i].style.display = "none";
                     }
+                    
                     return this;
                 },
                 color : function(color){
-                    if(this.e.length >= 0){
-                        for(var i = 0; i < this.e.length; i++){
+                    for (var i = 0; i < this.e.length; i++) {
                             this.e[i].style.color = color;
-                        }
-                    }else{
-                        this.e.style.color = color;
                     }
                     return this;
                 },
                 bgColor: function(color){
-                    if(this.e.length >= 0){
-                        for(var i = 0; i < this.e.length; i++){
-                            this.e[i].style.backgroundColor = color;
-                        }
-                        else{
-                            this.e.style.backgroundColor = color;
-                        }
+                     for (var i = 0; i < this.e.length; i++) {
+                        this.e[i].style.backgroundColor = color;
+                    }
                 },
-                size : function(size){
-
-                    if(this.e.length >= 0){
-                        for(var i = 0; i < this.e.length; i++){
-                            this.e[i].style.fontSize = size;
-                        }
+                size : function(effect, size){
+                    for (var i = 0; i < this.e.length; i++) {
+                        this.e[i].style.fontSize = size;
                     }
-                    else{
-                        this.e.style.fontSize = size;
-                    }
+                    
                     return this;
                 }
-            };
-
-            _.prototype.classOrId = function(elem) {
-                var classOrId = elem.charAt(0);
-                if(classOrId === "#"){
-                    elem = this.sliceElement(elem);
-                    this.e = document.getElementById(elem);
-                    return this;
-                }
-                else if(classOrId === "."){
-                    elem = this.sliceElement(elem)
-                    this.e = document.getElementsByClassName(elem);
-                    return this;
-                }
-            };
-
-             _.prototype.sliceElement = function(elem){
-                var elem = elem.slice(1);
-                return elem;
             };
 
         </script>
     </body>
 </html>
+
