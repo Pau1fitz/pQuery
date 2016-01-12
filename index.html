@@ -65,8 +65,8 @@
                     return this._eachElement('textContent', text)
                 },
 
-                addDiv: function(text){
-                    var x = document.createElement("div"); 
+                addDiv: function(element, text){
+                    var x = document.createElement(element); 
                     var t = document.createTextNode(text); 
                     x.appendChild(t); 
                     document.body.appendChild(x);   
