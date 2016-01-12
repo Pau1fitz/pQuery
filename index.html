@@ -36,6 +36,7 @@
                     }
                     return this;
                 }, 
+
                 hide: function () {
                     return this._eachStyle('visibility', 'hidden');
                 },
@@ -62,6 +63,14 @@
 
                 replace: function(text){
                     return this._eachElement('textContent', text)
+                },
+
+                addDiv: function(text){
+                    var x = document.createElement("div"); 
+                    var t = document.createTextNode(text); 
+                    x.appendChild(t); 
+                    document.body.appendChild(x);   
+                    return this;
                 }
             };
 
